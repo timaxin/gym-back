@@ -1,7 +1,7 @@
 package com.learning.gymback.service;
 
 import com.learning.gymback.repository.UserRepository;
-import com.learning.gymback.security.entity.User;
+import com.learning.gymback.security.entity.SecurityUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,15 +15,15 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User getUserByUsername(String username) {
+    public SecurityUser getUserByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(() -> new IllegalArgumentException("No user with this username"));
     }
 
-    public User getUserById(long id) {
+    public SecurityUser getUserById(long id) {
         return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No user with this id"));
     }
 
-    public List<User> getAllUsersByAdmin() {
+    public List<SecurityUser> getAllUsersByAdmin() {
         return userRepository.findAll();
     }
 }

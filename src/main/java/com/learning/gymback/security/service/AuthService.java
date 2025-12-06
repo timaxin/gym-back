@@ -1,9 +1,11 @@
 package com.learning.gymback.security.service;
 
+import com.learning.gymback.entity.user_profiles.UserProfile;
+import com.learning.gymback.repository.UserProfileRepository;
 import com.learning.gymback.security.constants.Role;
 import com.learning.gymback.security.dto.UserAuthRequestDto;
 import com.learning.gymback.security.dto.UserRegisterRequestDto;
-import com.learning.gymback.security.entity.User;
+import com.learning.gymback.security.entity.SecurityUser;
 import com.learning.gymback.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,26 +27,36 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final UserDetailsService userDetailsService;
+    private final UserProfileRepository profileRepository;
 
-    public User register(UserRegisterRequestDto dto) {
-        User user = mapToUser(dto);
-        return userRepository.save(user);
+    public SecurityUser register(UserRegisterRequestDto dto) {
+        UserProfile profile = mapToProfile(dto);
+        SecurityUser securityUser = mapToUser(dto, profile);
+
+        return userRepository.save(securityUser);
     }
 
     public String auth(UserAuthRequestDto dto) {
-        User user = (User) userDetailsService.loadUserByUsername(dto.getUsername());
+        SecurityUser securityUser = (SecurityUser) userDetailsService.loadUserByUsername(dto.getUsername());
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword()));
         return jwtService.generateJwtToken(dto.getUsername());
     }
 
-    private User mapToUser(UserRegisterRequestDto dto) {
-        return User.builder()
+    private SecurityUser mapToUser(UserRegisterRequestDto dto, UserProfile profile) {
+        return SecurityUser.builder()
                 .username(dto.getUsername())
-                .firstName(dto.getFirstName())
-                .lastName(dto.getLastName())
                 .email(dto.getEmail())
                 .password(passwordEncoder.encode(dto.getPassword()))
                 .roles(List.of(Role.USER))
+                .profile(profile)
+                .build();
+    }
+
+    private UserProfile mapToProfile(UserRegisterRequestDto dto) {
+        return UserProfile.builder()
+                .email(dto.getEmail())
+                .firstName(dto.getFirstName())
+                .lastName(dto.getLastName())
                 .build();
     }
 

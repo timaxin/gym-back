@@ -1,5 +1,5 @@
 convert to Base64 :
- POWERSHELL:  [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("user:20018c5c-d370-4429-8ac9-4bfb00d280b7"))
+ POWERSHELL:  [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("securityUser:20018c5c-d370-4429-8ac9-4bfb00d280b7"))
 
 generate jwt secret {BASH}: openssl rand -hex 32
 

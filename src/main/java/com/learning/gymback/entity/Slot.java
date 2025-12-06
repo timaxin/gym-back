@@ -1,6 +1,6 @@
 package com.learning.gymback.entity;
 
-import com.learning.gymback.security.entity.User;
+import com.learning.gymback.security.entity.SecurityUser;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,10 +19,14 @@ public class Slot {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "trainer_id", foreignKey = @ForeignKey(name = "fk_slots_trainer"))
-    private User trainer;
+    private SecurityUser trainer;
 
-    private long start;
+    @Column(name = "start_time")
+    private long startTime;
     private long duration;
+
+    @Column(name = "end_time")
+    private long endTime;
     private int capacity;
     private String type;
     private boolean canceled;
@@ -31,6 +35,6 @@ public class Slot {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by", foreignKey = @ForeignKey(name = "fk_slots_created_by"))
-    private User createdBy;
+    private SecurityUser createdBy;
 
 }

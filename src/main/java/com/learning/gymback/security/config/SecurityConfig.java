@@ -30,10 +30,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(httpRequest -> {
                     httpRequest.requestMatchers("/v1/auth/register", "/v1/auth/login")
                             .permitAll();
-                    httpRequest.requestMatchers(HttpMethod.POST)
-                            .hasAnyAuthority("SYS_ADMIN")
-                            .anyRequest()
-                            .authenticated();
+                    httpRequest.requestMatchers(HttpMethod.GET, "/v1/slots")
+                            .permitAll();
+                    httpRequest.requestMatchers(HttpMethod.DELETE, "/v1/slots")
+                            .hasAnyAuthority("SYS_ADMIN", "CLUB_ADMIN", "TRAINER");
+                    httpRequest.requestMatchers(HttpMethod.POST, "/v1/slots")
+                            .hasAnyAuthority("SYS_ADMIN", "CLUB_ADMIN", "TRAINER");
+                    httpRequest.anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

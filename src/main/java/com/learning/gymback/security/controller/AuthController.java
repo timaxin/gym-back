@@ -1,6 +1,6 @@
 package com.learning.gymback.security.controller;
 
-import com.learning.gymback.security.entity.User;
+import com.learning.gymback.security.entity.SecurityUser;
 import com.learning.gymback.security.dto.UserAuthRequestDto;
 import com.learning.gymback.security.dto.UserRegisterRequestDto;
 import com.learning.gymback.security.service.AuthService;
@@ -23,12 +23,12 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/v1/auth/register")
-    public ResponseEntity<User> register(@RequestBody UserRegisterRequestDto userRegisterRequestDto) {
+    public ResponseEntity<SecurityUser> register(@RequestBody UserRegisterRequestDto userRegisterRequestDto) {
         log.info("/v1/auth/register: {}", userRegisterRequestDto);
         //todo check same username/names/email
-        User user = authService.register(userRegisterRequestDto);
+        SecurityUser securityUser = authService.register(userRegisterRequestDto);
 
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(securityUser);
     }
 
     @PostMapping("/v1/auth/login")

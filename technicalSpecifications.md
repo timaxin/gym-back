@@ -144,14 +144,14 @@ ErrorBoundary
 
 #### Auth
 
-* POST `/auth/register` — { name, email, password } → 201 + { user, token }
-* POST `/auth/login` — { email, password } → 200 + { user, token }
+* POST `/auth/register` — { name, email, password } → 201 + { securityUser, token }
+* POST `/auth/login` — { email, password } → 200 + { securityUser, token }
 * POST `/auth/refresh` — refresh token
 
 #### Users
 
 * GET `/users/:id` — profile (admin может получить резюме, но не личную инфо у других)
-* PUT `/users/:id` — update profile (user or admin)
+* PUT `/users/:id` — update profile (securityUser or admin)
 
 #### Trainers (admin operations)
 
@@ -171,11 +171,11 @@ ErrorBoundary
 #### Bookings
 > _supports lazy-loading (pagination) and filters (date range, trainer, type) for GET /bookings_
 
-* GET `/bookings` — list for current user / admin filter
+* GET `/bookings` — list for current securityUser / admin filter
 * GET `/bookings/:id`
-> _server validates capacity, double booking, user daily limit etc for POST /bookings_
+> _server validates capacity, double booking, securityUser daily limit etc for POST /bookings_
 * POST `/bookings` — create booking { slotId, userId, participantsCount }
-* PUT `/bookings/:id/cancel` — cancel booking { reason } — enforces 6-hour rule for user cancellations
+* PUT `/bookings/:id/cancel` — cancel booking { reason } — enforces 6-hour rule for securityUser cancellations
 * DELETE `/bookings/:id` — admin cancellation
 
 #### Admin / Logs
@@ -191,7 +191,7 @@ ErrorBoundary
 ### Типизация (TypeScript interfaces — пример)
 ```typescript
 // src/types/models.ts
-export type Role = 'user' | 'trainer' | 'admin' | 'club_admin';
+export type Role = 'securityUser' | 'trainer' | 'admin' | 'club_admin';
 
 export interface User {
   id: string;
@@ -230,7 +230,7 @@ export interface Booking {
   createdAt: string;
   status: 'confirmed' | 'cancelled';
   cancelReason?: string;
-  participantsCount?: number; // for group bookings user may register multiple seats (optional)
+  participantsCount?: number; // for group bookings securityUser may register multiple seats (optional)
 }
 ```
 

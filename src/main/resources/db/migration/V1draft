@@ -3,7 +3,7 @@ CREATE TABLE trainers
 (
     id               BIGSERIAL PRIMARY KEY,
     user_id          BIGINT REFERENCES users (id) ON DELETE SET NULL,
-    name             TEXT   NOT NULL, -- remove if duplicating user name is not needed
+    name             TEXT   NOT NULL, -- remove if duplicating securityUser name is not needed
     daily_hour_limit INT
 );
 

@@ -14,3 +14,5 @@ jwt:
 logging:
   level:
     web: debug
+    com.learning.gymback: debug
+    org.hibernate.sql: debug

@@ -8,12 +8,16 @@ CREATE TABLE slots
     type       VARCHAR(255),
     canceled   BOOLEAN DEFAULT FALSE,
     created_by BIGINT,
+    location TEXT,
+    reason TEXT,
     CONSTRAINT pk_slots PRIMARY KEY (id),
-    CONSTRAINT fk_slots_trainer FOREIGN KEY (trainer_id) REFERENCES users(id) ON DELETE CASCADE,
-    CONSTRAINT fk_slots_created_by FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+    CONSTRAINT fk_slots_trainer FOREIGN KEY (trainer_id) REFERENCES public.trainers(id) ON DELETE CASCADE,
+    CONSTRAINT fk_slots_created_by FOREIGN KEY (created_by) REFERENCES security_users(id) ON DELETE SET NULL
 );
 
 CREATE INDEX idx_slots_trainer_id ON slots (trainer_id);
 CREATE INDEX idx_slots_start ON slots (start);
+
+
 
 

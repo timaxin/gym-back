@@ -1,10 +1,10 @@
 package com.learning.gymback.controller;
 
-import com.learning.gymback.dto.UserAdminResponseDto;
+import com.learning.gymback.advice.role_check.RoleCheck;
 import com.learning.gymback.entity.Slot;
 import com.learning.gymback.mapper.SlotMapper;
+import com.learning.gymback.security.constants.Role;
 import com.learning.gymback.security.dto.SlotCreateRequestDto;
-import com.learning.gymback.security.entity.User;
 import com.learning.gymback.service.SlotService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,8 +35,15 @@ public class SlotController {
         return saved != null ? ResponseEntity.ok(saved) : ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/v1/slots")
+    public ResponseEntity<String> deleteSlot(@RequestParam("id") Long id) {
+        log.info("DELETE /api/v1/slots?id={}", id);
+        return slotService.deleteSlot(id) ? ResponseEntity.ok("Slot with id: " + id + " deleted.")
+                : ResponseEntity.badRequest().body("Slot with id: " + id + " NOT deleted.");
+    }
+
     @GetMapping("/v1/slots")
-    public ResponseEntity<List<Slot>> getAllSlots() {
+    public ResponseEntity<List<Slot>> getAllSlots() { //todo little dto guest user on frontend
         log.info("/v1/slots/{}");
         List<Slot> slots = slotService.getAllSlots();
 
