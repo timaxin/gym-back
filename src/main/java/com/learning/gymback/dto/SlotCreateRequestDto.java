@@ -1,4 +1,4 @@
-package com.learning.gymback.security.dto;
+package com.learning.gymback.dto;
 
 public record SlotCreateRequestDto(
         long trainerId,

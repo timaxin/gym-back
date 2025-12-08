@@ -7,7 +7,6 @@ import java.util.List;
 public record UserChangeByAdminReqDto(Long id,
                                       String firstName,
                                       String lastName,
-                                      String username,
                                       List<Role> roles,
                                       String email,
                                       String bio,

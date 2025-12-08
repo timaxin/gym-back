@@ -21,7 +21,6 @@ public class SecurityConfig {
     private final AuthenticationProvider authenticationProvider;
     private final JwtAuthFilter jwtAuthFilter;
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
         httpSecurity
@@ -36,6 +35,10 @@ public class SecurityConfig {
                             .hasAnyAuthority("SYS_ADMIN", "CLUB_ADMIN", "TRAINER");
                     httpRequest.requestMatchers(HttpMethod.POST, "/v1/slots")
                             .hasAnyAuthority("SYS_ADMIN", "CLUB_ADMIN", "TRAINER");
+                    httpRequest.requestMatchers(HttpMethod.PUT, "/v1/users")
+                            . hasAnyAuthority("SYS_ADMIN", "CLUB_ADMIN", "TRAINER");
+                    httpRequest.requestMatchers(HttpMethod.GET, "/v1/users/**")
+                            . hasAnyAuthority("SYS_ADMIN", "CLUB_ADMIN");
                     httpRequest.anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

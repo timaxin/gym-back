@@ -23,12 +23,10 @@ public class UserByAdminController {
     private final UserForAdminMapper userForAdminMapper;
 
     @GetMapping("/v1/users")
-    public ResponseEntity<UserAdminResponseDto> getUserForAdminByUsername(@RequestParam("username") String username) {
-        log.info("/v1/users/{}", username);
-        SecurityUser securityUser = userService.getUserByUsername(username);
+    public ResponseEntity<UserAdminResponseDto> getUserForAdminByUsername(@RequestParam("email") String email) {
+        log.info("/v1/users/{}", email);
+        SecurityUser securityUser = userService.getUserByUsername(email);
         UserAdminResponseDto userAdminResponseDto = mapToResponseDto(securityUser);
-
-//        UserAdminResponseDto userAdminResponseDto = userForAdminMapper.toUserAdminResponseDto(securityUser);
 
         return userAdminResponseDto != null ? ResponseEntity.ok(userAdminResponseDto) : ResponseEntity.notFound().build();
     }
@@ -37,7 +35,6 @@ public class UserByAdminController {
     public ResponseEntity<UserAdminResponseDto> getUserForAdminById(@PathVariable("id") long id) {
         log.info("/v1/users/{}", id);
         SecurityUser securityUser = userService.getUserById(id);
-//        UserAdminResponseDto userAdminResponseDto = userForAdminMapper.toUserAdminResponseDto(securityUser);
         UserAdminResponseDto userAdminResponseDto = mapToResponseDto(securityUser);
 
         return userAdminResponseDto != null ? ResponseEntity.ok(userAdminResponseDto) : ResponseEntity.notFound().build();
@@ -62,7 +59,6 @@ public class UserByAdminController {
 
     private UserAdminResponseDto mapToResponseDto(SecurityUser securityUser) {
         return UserAdminResponseDto.builder()
-                .username(securityUser.getUsername())
                 .lastName(securityUser.getProfile().getLastName())
                 .firstName(securityUser.getProfile().getFirstName())
                 .email(securityUser.getEmail())

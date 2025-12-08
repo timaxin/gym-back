@@ -19,7 +19,7 @@ import java.util.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "security_users", uniqueConstraints = @UniqueConstraint(columnNames = "user_name"))
+@Table(name = "security_users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class SecurityUser implements UserDetails {
 
     @Id
@@ -27,9 +27,6 @@ public class SecurityUser implements UserDetails {
     private Long id;
 
     private String email;
-
-    @Column(name = "user_name")
-    private String username;
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -59,7 +56,7 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override

@@ -21,7 +21,8 @@ public class CommonConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> securityUserRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found!"));
+        return email -> securityUserRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found!"));
     }
 
     @Bean

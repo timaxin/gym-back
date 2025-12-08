@@ -2,6 +2,7 @@ package com.learning.gymback.security.filter;
 
 import com.learning.gymback.security.entity.SecurityUser;
 import com.learning.gymback.security.service.JwtService;
+import com.learning.gymback.service.SecurityUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +24,7 @@ import java.io.IOException;
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
-    private final UserDetailsService userDetailsService;
+    private final SecurityUserDetailsService userDetailsService;
 
 
     @Override
@@ -39,10 +40,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
 
         jwtToken = jwtToken.substring(7);
-        String username = jwtService.extractSubject(jwtToken);
+        String email = jwtService.extractSubject(jwtToken);
 
-        if (username != null && jwtService.isTokenValid(jwtToken)) {
-            SecurityUser securityUser = (SecurityUser) userDetailsService.loadUserByUsername(username);
+        if (email != null && jwtService.isTokenValid(jwtToken)) {
+            SecurityUser securityUser = (SecurityUser) userDetailsService.loadUserByUsername(email);
             UsernamePasswordAuthenticationToken authToken =
                     new UsernamePasswordAuthenticationToken(securityUser, null, securityUser.getAuthorities());
             authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

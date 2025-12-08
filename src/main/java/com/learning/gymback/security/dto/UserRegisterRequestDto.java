@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 public class UserRegisterRequestDto {
 
-    private String username;
     private String lastName;
     private String firstName;
     private String email;

@@ -22,7 +22,6 @@ public class UserProfile {
 
     private String firstName;
     private String lastName;
-    private String email;
 
 //    @OneToOne(mappedBy = "userProfile", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 //    private Trainer trainer;

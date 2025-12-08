@@ -5,6 +5,7 @@ import com.learning.gymback.security.entity.SecurityUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -12,8 +13,8 @@ import java.util.Set;
 public interface SecurityUserRepository extends JpaRepository<SecurityUser, Long> {
 
     Optional<SecurityUser> findById(Long id);
-    Optional<SecurityUser> findByUsername(String username);
 
     Optional<SecurityUser> findByRolesAndId(Set<Role> roles, long id);
 
+    Optional<SecurityUser> findByEmail(String email);
 }

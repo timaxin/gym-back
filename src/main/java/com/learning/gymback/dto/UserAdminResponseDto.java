@@ -9,7 +9,6 @@ import java.util.Set;
 public record UserAdminResponseDto(Long id,
                                    String firstName,
                                    String lastName,
-                                   String username,
                                    Set<Role> roles,
                                    String email,
                                    String bio,

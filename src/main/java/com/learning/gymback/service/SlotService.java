@@ -5,7 +5,7 @@ import com.learning.gymback.mapper.SlotMapper;
 import com.learning.gymback.repository.SlotRepository;
 import com.learning.gymback.security.constants.Role;
 import com.learning.gymback.security.repository.SecurityUserRepository;
-import com.learning.gymback.security.dto.SlotCreateRequestDto;
+import com.learning.gymback.dto.SlotCreateRequestDto;
 import com.learning.gymback.security.entity.SecurityUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

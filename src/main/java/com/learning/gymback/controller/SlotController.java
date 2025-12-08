@@ -1,10 +1,8 @@
 package com.learning.gymback.controller;
 
-import com.learning.gymback.advice.role_check.RoleCheck;
 import com.learning.gymback.entity.Slot;
 import com.learning.gymback.mapper.SlotMapper;
-import com.learning.gymback.security.constants.Role;
-import com.learning.gymback.security.dto.SlotCreateRequestDto;
+import com.learning.gymback.dto.SlotCreateRequestDto;
 import com.learning.gymback.service.SlotService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

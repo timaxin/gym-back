@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Slf4j
@@ -22,8 +23,10 @@ public class UserService {
     private final SecurityUserRepository securityUserRepository;
     private final UserDetailsService userDetailsService;
 
-    public SecurityUser getUserByUsername(String username) {
-        return securityUserRepository.findByUsername(username).orElseThrow(() -> new IllegalArgumentException("No user with this username"));
+    public SecurityUser getUserByUsername(String email) {
+        Optional<SecurityUser> user = securityUserRepository.findByEmail(email);
+
+        return user.orElseThrow(() -> new IllegalArgumentException("There is no user with this email"));
     }
 
     public SecurityUser getUserById(long id) {
@@ -31,17 +34,16 @@ public class UserService {
     }
 
     public UserAdminResponseDto changeUserByAdmin(UserChangeByAdminReqDto dto) {
-        SecurityUser securityUser = (SecurityUser) userDetailsService.loadUserByUsername(dto.username());
+        SecurityUser securityUser = (SecurityUser) userDetailsService.loadUserByUsername(dto.email());
         Set<Role> existingRoles = securityUser.getRoles();
 
         UserProfile userProfile = securityUser.getProfile();
-        userProfile.setEmail(dto.email());
         userProfile.setFirstName(dto.firstName());
         userProfile.setLastName(dto.lastName());
 
         if (dto.roles().contains(Role.TRAINER) && !existingRoles.contains(Role.TRAINER)) {
             if (dto.bio() == null || dto.phone() == null) {
-                throw new IllegalArgumentException("No bio or phone provided when trying to grant TRAINER role to user {} " + dto.username());
+                throw new IllegalArgumentException("No bio or phone provided when trying to grant TRAINER role to user {} " + dto.email());
             }
 
             userProfile.setBio(dto.bio());
@@ -58,7 +60,6 @@ public class UserService {
                 .firstName(userProfile.getFirstName())
                 .lastName(userProfile.getLastName())
                 .roles(securityUser.getRoles())
-                .username(securityUser.getUsername())
                 .build();
 
     }
