@@ -1,9 +1,32 @@
 services:
-  postgres:
-    image: 'postgres:latest'
+  db:
+    image: postgres:15
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB: gym
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d gym"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
     ports:
-      - '5432:5432'
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/gym
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      JWT_SECRET: 3e1c53937777c7a10f79bfbe83700f40ebeb95d05403b3084cc4176ba759430e
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+
+volumes:
+  db-data:

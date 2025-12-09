@@ -26,7 +26,7 @@ public class SlotController {
     private final SlotMapper slotMapper;
 
     @PostMapping("/v1/slots")
-    public ResponseEntity<SlotResDto> createSlot(@RequestBody SlotCreateRequestDto dto) {
+    public ResponseEntity<Slot> createSlot(@RequestBody SlotCreateRequestDto dto) {
         log.info("/v1/slots/{}", dto);
         Slot saved = slotService.createSlot(dto);
 

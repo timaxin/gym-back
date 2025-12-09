@@ -1,11 +1,15 @@
 spring:
   application:
-   name:
-    gym-back
+    name: gym-back
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/gym}
+    username: ${SPRING_DATASOURCE_USERNAME:user}
+    password: ${SPRING_DATASOURCE_PASSWORD:pass}
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: update
-
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
     show-sql: true
 
 
@@ -15,8 +19,8 @@ server:
 
 
 jwt:
-  secret:
-    3e1c53937777c7a10f79bfbe83700f40ebeb95d05403b3084cc4176ba759430e
+  secret: ${JWT_SECRET:3e1c53937777c7a10f79bfbe83700f40ebeb95d05403b3084cc4176ba759430e}
+
 logging:
   level:
     web: debug
