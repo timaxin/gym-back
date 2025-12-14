@@ -1,6 +1,6 @@
 package com.learning.gymback.security.service;
 
-import com.learning.gymback.entity.user_profiles.UserProfile;
+import com.learning.gymback.entity.UserProfile;
 import com.learning.gymback.security.constants.Role;
 import com.learning.gymback.security.dto.UserAuthRequestDto;
 import com.learning.gymback.security.dto.UserRegisterRequestDto;

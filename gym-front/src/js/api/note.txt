@@ -1,0 +1,16 @@
+axios
+
+public class UserRegisterRequestDto {
+
+    private String lastName;
+    private String firstName;
+    private String email;
+    private String password;
+}
+
+public record UserRegisterResponseDto(Long id,
+                                      String firstName,
+                                      String lastName,
+                                      String email,
+                                      Set<Role> roles) {
+}

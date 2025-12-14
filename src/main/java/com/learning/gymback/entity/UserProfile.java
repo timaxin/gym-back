@@ -1,4 +1,4 @@
-package com.learning.gymback.entity.user_profiles;
+package com.learning.gymback.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

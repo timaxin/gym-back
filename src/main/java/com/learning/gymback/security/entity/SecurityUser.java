@@ -2,7 +2,7 @@ package com.learning.gymback.security.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.learning.gymback.entity.Slot;
-import com.learning.gymback.entity.user_profiles.UserProfile;
+import com.learning.gymback.entity.UserProfile;
 import com.learning.gymback.security.constants.Role;
 import jakarta.persistence.*;
 import lombok.*;

@@ -2,7 +2,7 @@ package com.learning.gymback.service;
 
 import com.learning.gymback.dto.UserAdminResponseDto;
 import com.learning.gymback.dto.UserChangeByAdminReqDto;
-import com.learning.gymback.entity.user_profiles.UserProfile;
+import com.learning.gymback.entity.UserProfile;
 import com.learning.gymback.security.constants.Role;
 import com.learning.gymback.security.entity.SecurityUser;
 import com.learning.gymback.security.repository.SecurityUserRepository;
