@@ -1,12 +1,11 @@
 {
   "name": "gym-front",
   "version": "1.0.0",
-  "description": "",
   "main": "src/js/app.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server --port=5500 ./ --open=index.html",
+    "start": "webpack serve --mode development --open",
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development"
   },
@@ -22,11 +21,12 @@
     "html-webpack-plugin": "^5.6.5",
     "live-server": "^1.2.2",
     "style-loader": "^4.0.0",
-    "webpack": "^5.103.0",
+    "webpack": "^5.104.0",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
   },
   "dependencies": {
     "axios": "^1.13.2"
-  }
+  },
+  "description": ""
 }
