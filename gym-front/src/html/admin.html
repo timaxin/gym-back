@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Booking</title>
+    <script src="../js/api/admin.js" defer></script>
+</head>
+<body>
+<div id="app">
+    <!-- Your app will be mounted here -->
+    <div id="header">
+        <h2>FitnessBooking</h2>
+        <h3>New user registration</h3>
+    </div>
+    <div id="register-section">
+        <form id="register-form" onsubmit="event.preventDefault()">
+            <h3>Register</h3>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
