@@ -23,6 +23,8 @@ Base URL: `http://localhost:8080/api`
 - `POST /v1/auth/register` - Register new user
 - `POST /v1/auth/login` - Login and get JWT token
 
+some more are available
+
 ### Usage
 Include the JWT token in the `Authorization` header:
 ```
