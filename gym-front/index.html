@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness Booking</title>
+    <link href="src/css/login.css" rel="stylesheet"></link>
 </head>
+<script src="src/index.js" defer type="module"></script>
 <body>
-    <div id="app">
+    <div class="login-container">
         <!-- Your app will be mounted here -->
         <div id="header">
             <h2>Fitness Booking !!</h2>
@@ -28,5 +30,37 @@
             <button type="button" onclick="window.location.href='register.html'">Register</button>
         </div>
     </div>
+
+<div class="login-container background_blue">
+    <div class="welcome-text">
+        <img class="hantel-icon" src="src/img/hantel.svg" alt="dumbbel icon">
+        <p class="transform-journey">Transform your fitness journey</p>
+        <p class="book-sessions">Book sessions with top trainers, track your progress, and
+            achieve your fitness goals with FitnessBooking.</p>
+    </div>
+    <div class="pros-list">
+        <div class="pros-item">
+            <div class="check-icon">
+                <img src="src/img/round_check.svg" alt="ups">
+            </div>
+
+            <div class="pros-text">
+                <div class="pros-heading">Expert trainers</div>
+                <div class="pros-description">Access certified professionals for personalized training</div>
+            </div>
+        </div>
+        <div class="pros-item">
+            <div class="check-icon">
+                <img src="src/img/round_check.svg" alt="ups">
+            </div>
+
+            <div class="pros-text">
+                <div class="pros-heading">Flexible scheduling</div>
+                <div class="pros-description">Book sessions that fit your busy lifestyle</div>
+            </div>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

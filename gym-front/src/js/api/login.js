@@ -17,7 +17,7 @@ async function handleLogin(event) {
         await login({email, password});
         // Redirect or update UI on successful login
         console.log('Login successful!');
-        window.location.assign('/user_main_page.html')
+        window.location.assign('user_main_page.html')
 
     } catch (error) {
         console.error('Login failed:', error);
