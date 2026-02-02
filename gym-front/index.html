@@ -4,32 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness Booking</title>
-    <link href="src/css/login.css" rel="stylesheet"></link>
+    <link href="src/css/login.css" rel="stylesheet">
 </head>
 <script src="src/index.js" defer type="module"></script>
 <body>
-    <div class="login-container">
-        <!-- Your app will be mounted here -->
-        <div id="header">
-            <h2>Fitness Booking !!</h2>
-            <h3>Welcome back</h3>
+<div class="login-container background_white">
+    <!-- Your app will be mounted here -->
+    <div id="auth-section">
+        <div class="welcome-logo">
+            <div class="hantel-icon-blue">
+                <img src="src/img/hantel.svg" alt="dumbbel icon">
+            </div>
+
+            <p>FitnessBooking</p>
         </div>
-        <div id="auth-section">
-            <form id="login-form" onsubmit="event.preventDefault()">
-                <h3>Login</h3>
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-            <button type="button" onclick="window.location.href='register.html'">Register</button>
+        <div id="welcome-back-header">
+            <p class="welcome-back">Welcome back</p>
+            <p class="sign-in">Sign in to your account to continue</p>
         </div>
+
+        <form id="login-form" onsubmit="event.preventDefault()">
+            <p class="email-address">Email address</p>
+            <div>
+                <label for="email"></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <button type="button" onclick="window.location.href='register.html'">Register</button>
     </div>
+</div>
 
 <div class="login-container background_blue">
     <div class="welcome-text">

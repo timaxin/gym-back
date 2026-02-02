@@ -9,13 +9,25 @@ body { display: flex }
     height: 100vh;
     box-sizing: border-box;
     padding: 1rem;
-    font-family: 'Inter', sans-serif;
     color:#E0F2FE;
+}
+
+.login-container.background_white {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 1rem;
+    color: #020202;
 }
 
 .login-container {
     width: 50%;
     height: 100vh;
+    font-family: 'Inter', sans-serif;
+
 }
 
 .background_blue {
@@ -99,4 +111,88 @@ body { display: flex }
 
 .pros-description {
 
+}
+
+/*-------------LEFT SIDE-------------*/
+
+.welcome-back {
+    font-size: 30px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 36px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.sign-in {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 100;
+    font-style: normal;
+    line-height: 24px;
+    letter-spacing: 0;
+    vertical-align: middle;
+}
+
+.email-address {
+    font-size: 14px;
+    font-weight: 100;
+    font-style: normal;
+    line-height: 24px;
+    letter-spacing: 0;
+    vertical-align: middle;
+}
+
+.welcome-back-header {
+    margin-top: 0;
+}
+
+.sign-in {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 24px;
+    letter-spacing: 0;
+    vertical-align: middle;
+}
+
+.welcome-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+
+    font-size: 24px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 32px;
+    letter-spacing: 0;
+    vertical-align: middle;
+}
+
+.hantel-icon-blue {
+    width: 30px;
+    height: 30px;
+    background: #0284C7;
+    border-radius: 7px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*overflow: hidden; !* 👈 this is the key *!*/
+}
+
+.hantel-icon-blue img {
+    width: 70%;
+    height: 70%;
+}
+
+.welcome-back-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
