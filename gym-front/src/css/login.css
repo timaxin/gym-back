@@ -54,7 +54,7 @@ body {
     align-content: flex-end;
     height: 25px;
     width: 25px;
-    margin-right: 50px
+    margin-right: 0; /* Если уберешь этот маржин, то отступа почти не будет (он задаётся в родителе как gap: 12px) */
 
 }
 
